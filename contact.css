@@ -1,0 +1,94 @@
+#contact {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add background gradient animation */
+@keyframes backgroundAnimation {
+    0% {
+        background-color: hsla(84, 88%, 43%, 0.779);  /* Light greenish */
+    }
+    50% {
+        background-color: hwb(98 11% 3% / 0.388);  /* Bright green */
+    }
+    100% {
+        background-color: #bff10a2c;  /* Soft green */
+    }
+}
+
+/* Apply background animation */
+#contact {
+    animation: backgroundAnimation 5s infinite alternate;
+}
+
+/* Styling container for better alignment */
+#contact .container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;  /* Keep the text and form visible above the background */
+    z-index: 1;  /* Ensure text appears above the animated background */
+}
+
+/* Contact section header */
+#contact h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;  /* Dark text for visibility */
+}
+
+/* Paragraph text styling */
+#contact p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #555;  /* Slightly lighter text for contrast */
+}
+
+/* Contact info section */
+.contact-info {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Styling for individual contact items */
+.contact-info p {
+    font-size: 1rem;
+    margin: 5% 0;
+    color: #333;  /* Dark text for contact info */
+}
+
+/* Contact links (email, phone) */
+.contact-info a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+    color: #0acaf1;  /* Color change on hover */
+}
+
+/* Add subtle animation effect to links when hovered */
+.contact-info a {
+    transition: color 0.3s ease-in-out;
+}
+
+/* Add subtle movement effect to the container (scale up) */
+@keyframes scaleUp {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);  /* Slight scale-up effect */
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#contact .container {
+    animation: scaleUp 3s infinite ease-in-out;
+}

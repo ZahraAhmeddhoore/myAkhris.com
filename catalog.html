@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Catalog</title>
+    <link rel="stylesheet" href="cata.css">
+</head>
+<body>
+    <h1>Book Catalog</h1>
+    <ul id="bookList"></ul>
+
+    <script>
+        // Function to display books in the catalog
+        function displayBooks() {
+            const books = JSON.parse(localStorage.getItem("books")) || []; // Get books from localStorage
+            const bookList = document.getElementById("bookList");
+            bookList.innerHTML = ""; // Clear current book list
+
+            // Loop through the books and display them
+            books.forEach((book, index) => {
+                const li = document.createElement("li");
+                li.classList.add("book-item");
+
+                li.innerHTML = `
+                    <div class="book-item-content">
+                        <img src="${book.image || 'default-image.jpg'}" alt="${book.title}" class="book-image">
+                        <div class="book-details">
+                            <strong>${book.title}</strong><br>
+                            Author: ${book.author}<br>
+                            Genre: ${book.genre}<br>
+                            Year: ${book.year}
+                        </div>
+                    </div>
+                    <button class="delete-btn" onclick="deleteBook(${index})">Delete</button>
+                `;
+                bookList.appendChild(li); // Add the book to the list
+            });
+        }
+
+        // Function to delete a book from localStorage
+        function deleteBook(index) {
+            const books = JSON.parse(localStorage.getItem("books")) || []; // Get books from localStorage
+            books.splice(index, 1); // Remove the book at the given index
+
+            // Save the updated books list back to localStorage
+            localStorage.setItem("books", JSON.stringify(books));
+
+            // Re-display the updated book list
+            displayBooks();
+        }
+
+        // When the page loads, display the books
+        window.onload = displayBooks;
+    </script>
+</body>
+</html>
